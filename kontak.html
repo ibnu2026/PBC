@@ -210,17 +210,27 @@
 
         /* Media Query */
         @media (max-width: 768px) {
+            .navbar-nav {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+
             .navbar-logo {
                 font-size: 1.5rem;
                 font-weight: 700;
                 color: white;
             }
+
             .navbar-logo::after {
                 content: "PBC";
             }
+
             .navbar-logo::before {
                 content: "";
             }
+            
             .navbar-logo span {
                 display: none;
             }

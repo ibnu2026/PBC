@@ -1,294 +1,279 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontak | Programming Basic Course</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/56404d61f4.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/56404d61f4.js" crossorigin="anonymous"></script>
 
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      body {
-        font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #007bff, #00c6ff);
-        padding-top: 80px;
-        color: white;
-      }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            padding-top: 80px;
+            color: white;
+        }
 
-      /* Navbar */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 5%;
-        background-color: #007bff;
-        color: white;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: #007bff;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
 
-      .navbar-logo {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: white;
-        text-decoration: none;
-      }
-
-      .menu-toggle {
-        display: none;
-        font-size: 1.8rem;
-        cursor: pointer;
-      }
-
-      .navbar-nav {
-        display: flex;
-        gap: 15px;
-      }
-
-      .navbar-nav a {
-        color: white;
-        text-decoration: none;
-        font-size: 1rem;
-        padding: 8px 12px;
-        border-radius: 5px;
-        transition: 0.3s;
-      }
-
-      .navbar-nav a:hover {
-        background-color: yellow;
-        color: black;
-      }
-
-      /* Sidebar */
-      .sidebar {
-        position: fixed;
-        top: 0;
-        right: -250px;
-        width: 250px;
-        height: 100%;
-        background: #007bff;
-        padding: 20px;
-        transition: 0.3s ease-in-out;
-        z-index: 2000;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-      }
-
-      .sidebar.show {
-        right: 0;
-      }
-
-      .sidebar .close-btn {
-        text-align: right;
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: white;
-        margin-bottom: 10px;
-      }
-
-      .sidebar a {
-        display: block;
-        color: white;
-        text-decoration: none;
-        font-size: 1.2rem;
-        padding: 10px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .sidebar a:hover {
-        background-color: yellow;
-        color: black;
-      }
-
-      /* Kontak */
-      .kontak {
-        text-align: center;
-        padding: 3rem 5%;
-      }
-
-      .kontak h2 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .kontak p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-      }
-
-      .kontak .row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-      }
-
-      .kontak .maps {
-        flex: 1 1 45rem;
-        height: 22rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .kontak form {
-        flex: 1 1 45rem;
-        background: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        color: black;
-      }
-
-      .kontak form .input-group {
-        display: flex;
-        align-items: center;
-        margin-top: 1rem;
-        background-color: #f9f9f9;
-        border: 2px solid #ddd;
-        padding: 12px;
-        border-radius: 8px;
-      }
-
-      .kontak form .input-group input {
-        width: 100%;
-        border: none;
-        background: none;
-        padding: 10px;
-        font-size: 1rem;
-        color: black;
-      }
-
-      .kontak form .input-group i {
-        color: #007bff;
-        margin-right: 10px;
-      }
-
-      .kontak form .btn {
-        display: inline-block;
-        width: 100%;
-        padding: 12px;
-        font-size: 1rem;
-        color: white;
-        background-color: #06a93f;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        margin-top: 1.5rem;
-        transition: 0.3s;
-      }
-
-      .kontak form .btn:hover {
-        background-color: #038f31;
-      }
-
-      /* Media Query */
-      @media (max-width: 768px) {
         .navbar-logo {
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
         }
 
-        .navbar-logo::after {
-          content: "PBC";
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
         }
 
-        .navbar-logo::before {
-          content: "";
+        .navbar-nav {
+            display: flex;
+            gap: 15px;
         }
 
-        .navbar-logo span {
-          display: none;
+        .navbar-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .navbar-nav a:hover {
+            background-color: yellow;
+            color: black;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            width: 250px;
+            height: 100%;
+            background: #007bff;
+            padding: 20px;
+            transition: 0.3s ease-in-out;
+            z-index: 2000;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar.show {
+            right: 0;
+        }
+
+        .sidebar .close-btn {
+            text-align: right;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar a:hover {
+            background-color: yellow;
+            color: black;
+        }
+
+        /* Kontak */
+        .kontak {
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        .kontak h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .kontak p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
 
         .kontak .row {
-          flex-direction: column;
-          align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
         .kontak .maps {
-          width: 100%;
+            flex: 1 1 45rem;
+            height: 22rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
         }
 
         .kontak form {
-          width: 100%;
+            flex: 1 1 45rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            color: black;
         }
-      }
+
+        .kontak form .input-group {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            background-color: #f9f9f9;
+            border: 2px solid #ddd;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .kontak form .input-group input {
+            width: 100%;
+            border: none;
+            background: none;
+            padding: 10px;
+            font-size: 1rem;
+            color: black;
+        }
+
+        .kontak form .input-group i {
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        .kontak form .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            color: white;
+            background-color: #06a93f;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .kontak form .btn a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .kontak form .btn:hover {
+            background-color: #038f31;
+        }
+
+        /* Media Query */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar-logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: white;
+            }
+
+            .navbar-logo::after {
+                content: "PBC";
+            }
+
+            .navbar-logo::before {
+                content: "";
+            }
+
+            .navbar-logo span {
+                display: none;
+            }
+
+            .kontak .row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .kontak .maps {
+                width: 100%;
+            }
+
+            .kontak form {
+                width: 100%;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <!-- Navbar -->
     <nav class="navbar">
-      <a href="index.html" class="navbar-logo"
-        ><span>ProgrammingBasicCourse</span></a
-      >
-      <div class="navbar-nav">
+        <a href="index.html" class="navbar-logo"><span>ProgrammingBasicCourse</span></a>
+        <div class="navbar-nav">
+            <a href="index.html">Home</a>
+            <a href="kotlin.html">Kotlin</a>
+            <a href="intellij.html">IntelliJ</a>
+            <a href="tentang.html">Tentang</a>
+            <a href="kontak.html">Kontak</a>
+        </div>
+        <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()">×</div>
         <a href="index.html">Home</a>
         <a href="kotlin.html">Kotlin</a>
         <a href="intellij.html">IntelliJ</a>
         <a href="tentang.html">Tentang</a>
         <a href="kontak.html">Kontak</a>
-      </div>
-      <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
-    </nav>
-
-    <!-- Sidebar (Untuk HP) -->
-    <div class="sidebar" id="sidebar">
-      <div class="close-btn" onclick="toggleSidebar()">×</div>
-      <a href="index.html">Home</a>
-      <a href="kotlin.html">Kotlin</a>
-      <a href="intellij.html">IntelliJ</a>
-      <a href="tentang.html">Tentang</a>
-      <a href="kontak.html">Kontak</a>
     </div>
 
-    <!-- Kontak -->
-    <section class="kontak">
-      <h2>Hubungi <span style="color: #000">Kami</span></h2>
-      <p>Silakan hubungi kami melalui formulir di bawah.</p>
-      <div class="row">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31587.614271062615!2d113.82751411596377!3d-8.257747452485994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6a35242881a03%3A0x239ddb3d53ba98f0!2sKrajan%2C%20Pace%2C%20Kec.%20Silo%2C%20Kabupaten%20Jember%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1740842322674!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <form>
-          <div class="input-group">
-            <i class="fa-solid fa-user"></i
-            ><input type="text" placeholder="Nama" />
-          </div>
-          <div class="input-group">
-            <i class="fa-solid fa-envelope"></i
-            ><input type="email" placeholder="Email" />
-          </div>
-          <div class="input-group">
-            <i class="fa-solid fa-phone"></i
-            ><input type="tel" placeholder="Nomor WhatsApp" />
-          </div>
-          <button type="submit" class="btn">
-            <a href="https://wa.me/6285739483551">Kirim Pesan</a>
-          </button>
-        </form>
-      </div>
-    </section>
-
     <script>
-      function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("show");
-      }
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("show");
+        }
     </script>
-  </body>
+
+</body>
 </html>

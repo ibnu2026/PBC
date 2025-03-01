@@ -210,7 +210,11 @@
 
         /* Media Query */
         @media (max-width: 768px) {
-            .navbar-nav {
+            .navbar-logo::after {
+                content: "PBC";
+            }
+
+            .navbar-logo span {
                 display: none;
             }
 
@@ -233,7 +237,7 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="index.html" class="navbar-logo">ProgrammingBasicCourse</a>
+        <a href="index.html" class="navbar-logo"><span>Programming Basic Course</span></a>
         <div class="navbar-nav">
             <a href="index.html">Home</a>
             <a href="kotlin.html">Kotlin</a>
@@ -257,14 +261,14 @@
     <!-- Kontak -->
     <section class="kontak">
         <h2>Hubungi Kami</h2>
-        <p>Silakan hubungi kami melalui formulir di bawah.</p>
         <div class="row">
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31587.614271062615!2d113.82751411596377!3d-8.257747452485994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6a35242881a03%3A0x239ddb3d53ba98f0!2sKrajan%2C%20Pace%2C%20Kec.%20Silo%2C%20Kabupaten%20Jember%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1740846282616!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <form>
                 <div class="input-group"><i class="fa-solid fa-user"></i><input type="text" placeholder="Nama"></div>
                 <div class="input-group"><i class="fa-solid fa-envelope"></i><input type="email" placeholder="Email"></div>
+                <div class="input-group"><i class="fa-solid fa-phone"></i><input type="tel" placeholder="Nomor WhatsApp"></div>
                 <button type="submit" class="btn"><a href="https://wa.me/6285739483551">Kirim Pesan</a></button>
             </form>
         </div>

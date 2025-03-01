@@ -134,13 +134,14 @@
             gap: 20px;
         }
 
-        .kontak .map-container {
+        /* Google Maps Responsive */
+        .map-container {
             position: relative;
             width: 100%;
             padding-top: 56.25%; /* Aspect ratio 16:9 */
         }
-            
-        .kontak .map-container iframe {
+
+        .map-container iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -148,7 +149,7 @@
             height: 100%;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }           
+        }
 
         .kontak form {
             flex: 1 1 45rem;
@@ -225,9 +226,9 @@
                 align-items: center;
             }
 
-            .kontak .map-container {
+            .map-container {
                 padding-top: 75%; /* Lebih tinggi di HP */
-            } 
+            }
 
             .kontak form {
                 width: 100%;
@@ -266,18 +267,11 @@
         <p>Silakan hubungi kami melalui formulir di bawah.</p>
         <div class="row">
             <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31587.614271062615!2d113.82751411596377!3d-8.257747452485994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6a35242881a03%3A0x239ddb3d53ba98f0!2sKrajan%2C%20Pace%2C%20Kec.%20Silo%2C%20Kabupaten%20Jember%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1740844206682!5m2!1sid!2sid" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31587.614271062615!2d113.82751411596377!3d-8.257747452485994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6a35242881a03%3A0x239ddb3d53ba98f0!2sKrajan%2C%20Pace%2C%20Kec.%20Silo%2C%20Kabupaten%20Jember%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1740845035648!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
             </div>
-            
             <form>
                 <div class="input-group"><i class="fa-solid fa-user"></i><input type="text" placeholder="Nama"></div>
                 <div class="input-group"><i class="fa-solid fa-envelope"></i><input type="email" placeholder="Email"></div>
-                <div class="input-group"><i class="fa-solid fa-phone"></i><input type="tel" placeholder="Nomor WhatsApp"></div>
                 <button type="submit" class="btn"><a href="https://wa.me/6285739483551">Kirim Pesan</a></button>
             </form>
         </div>

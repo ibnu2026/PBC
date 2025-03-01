@@ -131,8 +131,6 @@
         }
 
         .btn-primary {
-            display: inline-block;
-            justify-content: center;
             background-color: yellow;
             padding: 12px 20px;
             font-size: 16px;
@@ -146,6 +144,13 @@
 
         .btn-primary:hover {
             background-color: orange;
+        }
+
+        .hero .btn-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         /* Media Query */
@@ -173,6 +178,11 @@
             }
             .navbar-logo span {
                 display: none;
+            }
+
+            .hero .btn-container {
+                flex-direction: column;
+                align-items: center;
             }
         }
 

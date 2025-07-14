@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programming Basic Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #007bff, #00c6ff);
+        padding-top: 80px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        background-color: #007bff;
+        color: white;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+      }
+
+      .navbar-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      .navbar-nav {
+        display: flex;
+        gap: 15px;
+      }
+
+      .navbar-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 8px 12px;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+
+      .navbar-nav a:hover {
+        background-color: yellow;
+        color: black;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background: #007bff;
+        padding: 20px;
+        transition: 0.3s ease-in-out;
+        z-index: 2000;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .sidebar.show {
+        right: 0;
+      }
+
+      .sidebar .close-btn {
+        text-align: right;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .sidebar a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+
+      .sidebar a:hover {
+        background-color: yellow;
+        color: black;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: white;
+        max-width: 600px;
+        margin: auto;
+        margin-bottom: 20px;
+      }
+
+      .btn-primary {
+        background-color: yellow;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        color: black;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.3s;
+        min-width: 200px;
+        text-align: center;
+        display: inline-block;
+      }
+
+      .btn-primary:hover {
+        background-color: orange;
+      }
+
+      .hero .btn-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .logout {
+        background: red;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      @media (max-width: 1024px) {
+        .navbar-nav {
+          display: none;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .hero .btn-container {
+          flex-direction: row;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar-logo {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: white;
+        }
+        .navbar-logo::after {
+          content: "PBC";
+        }
+        .navbar-logo::before {
+          content: "";
+        }
+        .navbar-logo span {
+          display: none;
+        }
+        .hero .btn-container {
+          flex-direction: column;
+          gap: 25px;
+        }
+        .btn-primary {
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="{{ url_for('index') }}" class="navbar-logo"
+        ><span>ProgrammingBasicCourse</span></a
+      >
+      <div class="navbar-nav">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="kontak.html">Kontak</a>
+        {% if session.get('user_id') %}
+        <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+        <a href="{{ url_for('profil') }}" style="margin-left: 10px">
+          <img
+            src="{{ foto or url_for('static', filename='default.png') }}"
+            alt="Foto Profil"
+            style="
+              width: 23px;
+              height: 23px;
+              border-radius: 30%;
+              object-fit: cover;
+            "
+          />
+        </a>
+        {% else %}
+        <a
+          href="{{ url_for('register') }}"
+          style="background: white; color: #007bff; font-weight: 600"
+          >Register</a
+        >
+        <a
+          href="{{ url_for('login') }}"
+          style="background: white; color: #007bff; font-weight: 600"
+          >Login</a
+        >
+        {% endif %}
+      </div>
+      <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+    </nav>
+
+    <div class="sidebar" id="sidebar">
+      <div class="close-btn" onclick="toggleSidebar()">×</div>
+      <a href="tentang">Tentang</a>
+      <a href="kontak">Kontak</a>
+      {% if session.get('user_id') %}
+      <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+      <a href="{{ url_for('profil') }}" style="margin-left: 10px">
+        <img
+          src="{{ foto or url_for('static', filename='default.png') }}"
+          alt="Foto Profil"
+          style="
+            width: 23px;
+            height: 23px;
+            border-radius: 30%;
+            object-fit: cover;
+          "
+        />
+      </a>
+      {% else %}
+      <a
+        href="{{ url_for('register') }}"
+        style="background: white; color: #007bff"
+        >Register</a
+      >
+      <a href="{{ url_for('login') }}" style="background: white; color: #007bff"
+        >Login</a
+      >
+      {% endif %}
+    </div>
+
+    <div class="hero">
+      {% if session.get('nama') %}
+      <h1>Selamat datang, {{ session['nama'] }}!</h1>
+      <p>
+        Pemrograman adalah proses menulis, menguji, dan menjalankan kode untuk
+        memberi instruksi kepada komputer.
+      </p>
+      <p>
+        Programming Basic Course (PBC) merupakan kursus dasar dalam pemrograman.
+      </p>
+      {% else %}
+      <h1>Selamat Datang di Programming Basic Course (PBC)</h1>
+      <p>
+        Pemrograman adalah proses menulis, menguji, dan menjalankan kode untuk
+        memberi instruksi kepada komputer.
+      </p>
+      {% endif %}
+      <div class="btn-container">
+        <a href="{{ url_for('daftar') }}" class="btn-primary">Daftar Sekarang</a>
+        <a href="{{ url_for('infopendaftaran') }}" class="btn-primary">Info Pendaftaran</a>
+      </div>
+    </div>
+
+    <script>
+      function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>

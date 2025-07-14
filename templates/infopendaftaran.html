@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programming Basic Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #007bff, #00c6ff);
+        padding-top: 80px; /* Agar tidak tertutup navbar */
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        background-color: #007bff;
+        color: white;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+      }
+
+      .navbar-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      .navbar-nav {
+        display: flex;
+        gap: 15px;
+      }
+
+      .navbar-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 8px 12px;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+
+      .navbar-nav a:hover {
+        background-color: yellow;
+        color: black;
+      }
+
+      /* Sidebar untuk HP */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background: #007bff;
+        padding: 20px;
+        transition: 0.3s ease-in-out;
+        z-index: 2000;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .sidebar.show {
+        right: 0;
+      }
+
+      .sidebar .close-btn {
+        text-align: right;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .sidebar a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+      }
+
+      .sidebar a:hover {
+        background-color: yellow;
+        color: black;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 10px 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: white;
+        max-width: 600px;
+        margin: auto;
+        margin-bottom: 10px;
+      }
+
+      .btn-primary {
+        background-color: yellow;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        color: black;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: orange;
+      }
+
+      /* Media Query */
+      @media (max-width: 1024px) {
+        .navbar-nav {
+          display: none;
+        }
+        .menu-toggle {
+          display: block;
+        }
+      }
+
+      @media (max-width: 768px) {
+        /* Sembunyikan teks "ProgrammingBasicCourse" dan ganti dengan "PBC" */
+        .navbar-logo {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: white;
+        }
+        .navbar-logo::after {
+          content: "PBC";
+        }
+        .navbar-logo::before {
+          content: "";
+        }
+        .navbar-logo span {
+          display: none;
+        }
+      }
+
+      .table-container {
+        width: 80%;
+        margin: 20px auto;
+        overflow-x: auto;
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 5px;
+      }
+
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .table-container {
+          width: 95%;
+          padding: 10px;
+        }
+
+        table {
+          font-size: 14px;
+        }
+
+        th,
+        td {
+          padding: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="{{ url_for('index') }}" class="navbar-logo"
+        ><span>ProgrammingBasicCourse</span></a
+      >
+      <div class="navbar-nav">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="kontak.html">Kontak</a>
+      </div>
+      <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+    </nav>
+
+    <!-- Sidebar (Untuk HP) -->
+    <div class="sidebar" id="sidebar">
+      <div class="close-btn" onclick="toggleSidebar()">×</div>
+      <a href="index.html">Home</a>
+      <a href="tentang.html">Tentang</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h2>Data Pendaftar Kursus</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Kursus</th>
+              <th>Tanggal Daftar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for nama, kursus, tanggal in data %}
+            <tr>
+              <td>{{ nama }}</td>
+              <td>{{ kursus }}</td>
+              <td>{{ tanggal }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>
